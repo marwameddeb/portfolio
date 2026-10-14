@@ -1,0 +1,1238 @@
+html {
+    scroll-behavior: smooth;
+    /* On met la couleur sombre ici pour l'anti-flash, 
+       mais on laisse le dégradé du body gérer la transparence */
+    background-color: var(--bg-main); 
+}
+
+:root {
+    --bg-main: #f8fafc;
+    --grad-top: rgba(247, 212, 232, 0.5); /* Réduit à 0.7 pour mieux voir le binaire */
+    --grad-bottom: rgba(251, 245, 248, 0.7);
+    --accent-color: #d705b1a0;
+    --text-color: #1e293b;
+}
+
+.dark {
+    --bg-main: #0f172a;
+    --grad-top: rgba(15, 23, 42, 0.85); /* Un peu de transparence même en dark */
+    --grad-bottom: rgba(15, 23, 42, 0.85);
+    --text-color: #f8fafc;
+    --accent-color: rgba(58, 187, 19, 0.722);
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding-top: 70px;
+    color: var(--text-color);
+    
+    background-image: linear-gradient(
+        to bottom,
+        var(--grad-top), 
+        var(--grad-bottom)
+    );
+    background-attachment: fixed;
+    background-color: transparent; 
+    transition: color 0.3s ease;
+}
+
+#binary-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2; 
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+/* --- MODE JOUR (Par défaut) --- */
+
+.binary-column {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: rgba(30, 41, 59, 0.1); /* Gris très discret sur le dégradé rose */
+    text-shadow: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0s, color 0s, text-shadow 0s; /* Transition douce lors du changement de mode */
+}
+
+
+.dark .binary-column {
+    /* Couleur du texte très pâle */
+    color: rgba(0, 255, 65, 0.4)!important;
+    
+    /* Effet Fluo Cyan : lueur interne et halo externe */
+    text-shadow: 
+       0 0 5px rgba(0, 255, 65, 1),    /* Cœur de la lettre brillant */
+        0 0 15px rgba(0, 255, 65, 0.6),  /* Halo moyen */
+        0 0 25px rgba(0, 255, 65, 0.3);  /* Diffusion large */
+        animation: binaryPulse 3s infinite alternate;
+}        
+    /* Animation pour donner vie au fond */
+@keyframes binaryPulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+   
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    background: rgba(0,0,0,0.7);
+    color: rgb(246, 242, 242);
+    position: fixed;
+    width: 100%;
+    height: 80px; /* Hauteur fixe plus fine */
+    z-index: 1000;
+    
+}
+
+header h2 {
+    margin: 0;
+    color: #d705b1a0;
+    font-size: 1.5rem;
+}
+
+header nav {
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 20px;
+    background: transparent;
+}
+
+header nav a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+
+header nav a:hover { 
+    color: #d705b1a0;
+ }
+
+
+ /* Mode Dark (Vert) */
+.dark header nav a:hover { 
+    color: rgba(58, 187, 19, 0.722);
+}
+
+.hero {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding-top: 40px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    pointer-events: none;
+}
+
+.hero-flex {
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.hero-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit:cover;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.hero-content {
+    position:relative;
+    text-align:center;
+    
+    padding: 130px;
+}
+
+
+.hero-content h1 {
+    color: #1e293b;
+    font-size: 3rem;
+    transition: color 0.3s;
+}
+
+.hero-content h1 span {
+    color: #d705b1a0;
+}
+
+
+/* Changement  Marwa meddeb en vert uniquement en Mode Sombre */
+.dark .hero-content h1 span {
+    color: rgba(58, 187, 19, 0.722);
+}
+
+
+.projects-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+.projects-grid a.card {
+    text-decoration: none; 
+    color: inherit;       /* Garde la couleur du texte d'origine */
+    display: block;       /* Pour que toute la carte soit cliquable */
+}
+
+
+.card {
+    /* Mise en page et dimensions */
+    display: inline-block;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    
+    /* Design et Transparence */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    
+    /* ÉTAT INITIAL POUR L'ANIMATION (Important) */
+    opacity: 0; 
+    transform: translateY(40px); /* Position basse de départ */
+    /* Transition fluide pour TOUT (animation d'entrée + hover) */
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                opacity 0.6s ease-out, 
+                box-shadow 0.3s ease;
+}
+
+/* ÉTAT FINAL (Quand le JS ajoute .show) */
+.card.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important; /* Revient à sa place */
+}
+
+/* EFFET AU SURVOL (Après l'apparition) */
+.card.show:hover {
+    transform: translateY(-10px) scale(1.03) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dark .card {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.dark .card.show:hover {
+    box-shadow: 0 15px 40px rgba(58, 187, 19, 0.3); /* Ombre verte */
+}
+
+.dark .card:hover {
+    /* On garde le mouvement, on change juste la couleur de l'ombre */
+    box-shadow: 0 15px 40px rgba(58, 187, 19, 0.2); 
+}
+
+
+
+
+
+
+
+
+.card h3 {
+    color: #1e293b; /* Couleur par défaut */
+    font-size: 1.1rem;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.card:active {
+    transform: scale(0.95);
+}
+
+.card img {
+     width: 100%;
+     height: 180px;
+     object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+
+
+
+
+.card:hover h3 {
+    color: #d705b1a0 !important;
+}
+
+.dark .card:hover h3 {
+    color:  rgba(58, 187, 19, 0.722) !important;
+}
+
+
+.skills {
+         display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+    }
+
+.skills div {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.skills span {
+    font-size: 12px;
+    color: gray;
+}
+
+.skills img {
+    width: 20px;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: flex-end; /* ou space-around/space-between selon le style */
+   /* permet aux items de passer à la ligne si besoin */
+    padding: 10px 20px; /* espacement interne */
+
+}
+
+nav a {
+    font-weight: bold;
+    font-weight: 700;
+    position: relative;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* effet souligné animé */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #d705b1a0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+/* Mode Dark (Vert) */
+.dark nav a::after {
+    background: rgba(58, 187, 19, 0.722);
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: #d705b1a0;
+}
+
+.nav-link.active {
+    color: #d705b1a0;
+}
+
+
+
+
+
+.qualities {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin: 100px 20px;
+    color: #1e293b;
+    
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.qualities div {
+    max-width: 250px;
+}
+
+
+/* Conteneur principal de la barre */
+.sidebar-contact {
+  position: fixed;
+    left: 0;
+    /* On place le haut de la barre à 50% de la hauteur de l'écran */
+    top: 50%; 
+    /* On remonte la barre de 50% de sa propre hauteur pour la centrer pile au milieu */
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+/* Style de chaque lien */
+.side-link {
+    display: flex;
+    align-items: center;
+    
+    background: transparent;
+    
+    /* L'effet de flou qui rend le fond binaire artistique derrière l'icône */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: blur(8px); /* Pour Safari/iOS */
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 5px;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 0 8px 8px 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 48px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--accent-color);
+    
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.side-link.cv {
+    background: rgba(235, 134, 168, 0.2); /* Rose très transparent */
+    border-right: 3px solid #e14e9a;
+    
+}
+
+.side-link.cv:hover {
+    background: #f768dda0; /* Rose plus intense au survol */
+}
+
+.side-link img {
+    width: 27px;
+    height: 27px;
+    min-width: 24px;
+}
+
+/* Texte caché par défaut */
+.side-text {
+    color: white;
+    margin-left: 15px;
+    font-weight: 700;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* EFFET AU SURVOL : La barre s'allonge */
+.side-link:hover {
+    width: 160px;
+    background: #d705b1a0;
+    box-shadow: 4px 0 15px rgba(0, 173, 181, 0.4);
+    
+}
+
+.side-link:hover .side-text {
+    opacity: 1;
+}
+
+/* --- ADAPTATION MODE DARK --- */
+.dark .side-link {
+    
+    border-right: 3px solid rgba(58, 187, 19, 0.8); /* Bordure verte */
+    color: white;
+}
+
+.dark .side-link:hover {
+    background: rgba(58, 187, 19, 0.722) ;
+}
+
+
+/* Mode Sombre : Configuration du bouton CV en vert fluo */
+.dark .side-link.cv {
+    background: rgba(0, 255, 65, 0.1); /* Vert très subtil et transparent */
+    border-right: 3px solid #00ff41;    /* La ligne bien fluo à droite */
+}
+
+/* Effet au survol en mode sombre */
+.dark .side-link.cv:hover {
+    background: rgba(0, 255, 65, 0.3); /* On augmente l'intensité au survol */
+    box-shadow: -5px 0 15px rgba(0, 255, 65, 0.4); /* Petit halo lumineux vert */
+}
+
+/* Optionnel : Changer la couleur du texte "Mon CV" en vert aussi au survol */
+.dark .side-link.cv:hover .side-text {
+    color: #00ff41;
+    font-weight: bold;
+}
+
+
+/* Masquer sur petit mobile si ça gêne la lecture */
+@media (max-width: 600px) {
+    .sidebar-contact {
+        display: none;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .project-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-container img {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+/* Container pour centrer la certification */
+.certif-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* L'effet Grande Carte sur l'image */
+.certif-large-card {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+ /* On force l'élément à ignorer les calculs d'opacité du JS au début */
+    visibility: visible !important;
+    opacity: 0; /* Commence à 0 pour l'animation */
+    
+    /* L'animation iPhone Zoom */
+    animation: iphoneZoom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.2s; /* Petit délai pour que la page soit chargée */
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* Petit effet sympa au survol */
+.certif-large-card:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 25px 60px rgba(215, 5, 177, 0.2); /* Ombre mauve au survol */
+}
+
+/* Texte sous la certif */
+.certif-info p {
+    margin-top: 25px;
+    text-align: center;
+    color: #694763 !important; /* Le !important assure la priorité si besoin */
+    font-size: 1.1rem;
+    font-weight: 500; /* Optionnel : pour que ce soit bien lisible */
+    transition: color 0s; /* Change de couleur sans délai */
+}
+/* Adaptation Mode Dark */
+/* Bordure et ombre de la carte en mode Dark */
+.dark .certif-large-card {
+    border-color: rgba(58, 187, 19, 0.3);
+}
+
+/* Ombre verte au survol en mode Dark */
+.dark .certif-large-card:hover {
+    box-shadow: 0 25px 60px rgba(58, 187, 19, 0.3);
+}
+
+/* Texte sous la certif en mode Dark */
+.dark .certif-info p {
+    color: #e2e8f0 !important; 
+}
+
+
+
+
+
+/*mode dark bouton*/
+/* Positionnement du bouton dans ton portfolio */
+.mode-switch {
+    position: fixed;
+    right: 30px;
+    top: 20px;
+    z-index: 5000;
+}
+
+#darkModeToggle {
+    display: none;
+}
+
+.switch-label {
+    width: 65px; /* Un peu plus large pour laisser de la place aux images */
+    height: 32px;
+    background-color: #e2e8f0; /*  gris clair */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s ease;
+}
+
+/* Style commun pour les deux images lune et soleil */
+.switch-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    z-index: 1; /* Reste sous la boule */
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+/* La boule blanche qui glisse */
+.switch-ball {
+    position: absolute;
+    background-color: #ffffff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Passe au-dessus des images */
+}
+
+/* --- LOGIQUE DE BASCULE --- */
+
+/* 1. Le fond change en mode Dark */
+#darkModeToggle:checked + .switch-label {
+    background-color: #334155; /* Gris foncé/Bleu ardoise */
+}
+
+/* 2. La boule glisse vers la droite (sur le soleil) */
+#darkModeToggle:checked + .switch-label .switch-ball {
+    transform: translateX(33px);
+}
+
+/* 3. Optionnel : un petit effet sur l'icône quand elle est active */
+#darkModeToggle:checked + .switch-label .icon-sun {
+    transform: scale(1.1);
+}
+
+body:not(.dark) .icon-moon {
+    transform: scale(1.1);
+}
+.switch-icon {
+    /* ...  autres propriétés ... */
+    mix-blend-mode: multiply; /* Cette ligne rend le blanc transparent */
+}
+
+
+
+
+
+.dark .card h3 {
+    color: white !important;
+}
+.dark .hero-content h1, 
+.dark .qualities,
+.dark h2,
+.dark .page h1,
+.dark .project-info p,
+.dark .project-info li,
+.dark .project-info h3 {
+    color: #f8fafc;
+}
+
+
+
+.dark .project-container {
+    background: #1e293b; /* Card sombre */
+    border-color: rgba(255,255,255,0.1);
+}
+
+
+
+.page {
+    min-height: 100vh;
+    padding: 120px 20px;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    overflow: visible; 
+    
+
+}
+
+.page > * {
+    margin-bottom: 20px; 
+}
+
+.page h1 {
+    
+
+    margin-bottom: 40px;
+    color: #1e293b;
+    text-align: center;
+    position: relative;
+
+     font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: fadeHero 1s ease;
+}
+
+
+/* --- Barre décorative sous le titre principal (H1) --- */
+
+/* Mode Jour (Mauve) */
+.page h1::after {
+    content: "";
+    width: 60px;
+    height: 3px;
+    background: #d705b1a0; /* le mauve habituel */
+    display: block;
+    margin: 10px auto;
+}
+
+/* Mode Dark (Vert) */
+.dark .page h1::after {
+    background: rgba(58, 187, 19, 0.722);
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    
+    margin-bottom: 40px;
+    position: relative;
+    letter-spacing: 1px;
+    
+    color: #1e293b;
+    text-align: center;
+
+}
+
+.project-page h1 {
+    color: #1e293b;
+}
+
+.dark .project-page h1 {
+    color: #f8fafc; /* Blanc en Dark Mode */
+}
+.project-page {
+    padding: 100px 20px;
+    text-align: center;
+
+}
+
+#projects {
+    min-height: 60vh; /* Réserve 80% de la hauteur de l'écran */
+    display: block;
+    scroll-margin-top: 150px;
+}
+
+.project-page h3,
+.project-page p,
+.project-page li {
+    color: #e2e8f0;
+}
+
+h2::after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    background: #d705b1a0;
+    display: block;
+    margin: 10px auto;
+}
+/* Mode Dark (Vert) */
+.dark h2::after {
+    background: rgba(58, 187, 19, 0.722);
+}
+
+
+
+/* --- ANIMATIONS SCROLL --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  visibility: hidden;
+    
+}
+
+.fade-in.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible;
+}
+
+.hero-content {
+    animation: fadeHero 1.5s ease;
+}
+
+
+
+
+
+
+.project-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+  
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Effet card */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.project-container img {
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+.project-info p, .project-info h3, .project-info li {
+    color: #1e293b ; 
+    text-align: left;
+}
+
+    
+
+
+/* Style du lien logo */
+.logo-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+/* --- LA MODALE (Conteneur principal) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    /* Ajout de flex pour être SÛR que c'est centré */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Boîte de dialogue */
+.modal-content {
+    background: #0f172a; 
+    padding: 25px; /* Réduit pour plus de compacité */
+    border: 2px solid #d705b1a0; 
+    width: 280px; /* On passe de 320px à 280px */
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espace équilibré entre le titre et le bouton */
+}
+
+/* Titre H3 à l'intérieur (Mauve par défaut) */
+.modal-content h3 {
+    color: #d705b1a0;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+/* --- ADAPTATION MODE DARK (VERT) --- */
+
+/* La bordure de la boîte passe au vert */
+.dark .modal-content {
+    border-color: rgba(58, 187, 19, 0.8);
+    background: #020617; /* Encore plus sombre pour le Matrix */
+}
+
+/* Le titre H3 passe au vert */
+.dark .modal-content h3 {
+    color: rgba(58, 187, 19, 0.722);
+}
+
+/* Le bouton fermer (X) passe au vert */
+.dark .close-btn {
+    color: rgba(58, 187, 19, 0.722);
+}
+
+
+/* Bouton fermer (X) */
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #d705b1a0; /* Mauve par défaut */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* Bouton bleu "M'envoyer un message" */
+.contact-btn {
+    display: inline-block !important; /* Force l'existence physique */
+    background: linear-gradient(135deg, #6366f1, #590981) ;
+    color: white !important;
+    padding: 15px 25px !important;
+    text-decoration: none !important;
+    border-radius: 50px !important;
+    font-weight: bold !important;
+    margin-top: 15px !important;
+    min-width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none;
+    visibility: visible !important;
+}
+/* Mode Dark (Dégradé de deux Verts) */
+.dark .contact-btn {
+    /* Un vert un peu plus sombre vers un vert plus électrique */
+    background: linear-gradient(135deg, #2d5a27, #3abb13);
+    color: white; /* On garde le texte blanc pour le contraste */
+    box-shadow: 0 4px 15px rgba(58, 187, 19, 0.3); /* Optionnel : petite lueur verte */
+}
+
+/* Effet au survol en Mode Dark */
+.dark .contact-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #3abb13, #4ade80); /* S'éclaircit au survol */
+    box-shadow: 0 6px 20px rgba(58, 187, 19, 0.5);
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+}
+
+
+
+.logo-container {
+    position: relative;
+    z-index: 10001 !important; /* Plus haut que le fond binaire et la modale */
+}
+
+.logo-contact {
+    display: flex !important;
+    align-items: center;
+    gap: 10px; /* Espace entre Marwa et l'icône */
+    text-decoration: none;
+    color: #d705b1a0; /* Ta couleur rose/violette */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0s, color 0s;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* Force la zone à accepter le clic */
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+.logo-contact h2 {
+    color: #d705b1 !important;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Mode Dark pour le nom Marwa */
+.dark .logo-contact h2 {
+    color: #3abb13 !important; /* Vert Matrix */
+    text-shadow: 0 0 10px rgba(58, 187, 19, 0.5);
+}
+
+/* Le petit cercle autour de  @.png */
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background: rgba(215, 5, 177, 0.1); 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(215, 5, 177, 0.3);
+    flex-shrink: 0; /* Empêche le cercle de s'écraser */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0s, color 0s;
+}
+
+.icon-circle img {
+    width: 40px; /* Ajuste selon la taille de ton image @.png */
+    height: auto;
+}
+/* Adaptation du cercle de l'icône en mode Dark */
+.dark .icon-circle {
+    background: rgba(58, 187, 19, 0.1); 
+    border-color: rgba(58, 187, 19, 0.3);
+}
+
+/* Effet au survol du logo en mode Dark */
+.dark .logo-contact:hover .icon-circle {
+    background: rgba(58, 187, 19, 0.722);
+    border-color: rgba(58, 187, 19, 0.722);
+}
+
+/* --- EFFETS AU SURVOL --- */
+.logo-contact:hover {
+    color: #d705b1a0; 
+}
+
+.logo-contact:hover .icon-circle {
+    background: #d705b1a0;
+    border-color: #d705b1a0;
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* En mode Dark, on s'assure que le logo reste bien visible */
+.dark .logo-contact {
+    color: rgba(58, 187, 19, 0.722) ; 
+}
+
+.dark .logo-contact:hover {
+    color: rgba(58, 187, 19, 0.722) ;
+}
+
+
+
+
+/* Style des liens dans la modale */
+.modal-link {
+    color: #cbd5e1; /* Gris clair pour être lisible sur fond sombre */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.modal-link:hover {
+    color: #d705b1a0; /* Rose au survol */
+    text-decoration: underline;
+}
+
+/* Version Matrix pour les liens */
+.dark .modal-link:hover {
+    color: #3abb13; /* Vert Matrix au survol */
+}
+
+
+/* Style pour les langues */
+.languages-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.lang-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(215, 5, 177, 0.3); /* Mauve par défaut */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0s, color 0s;
+}
+
+/* Adaptation Mode Dark pour les langues */
+.dark .lang-item {
+    border-color: rgba(58, 187, 19, 0.722); /* Vert */
+    background: rgba(58, 187, 19, 0.05);
+}
+
+/* Amélioration des listes */
+ul.fade-in {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+ul.fade-in li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* Petite puce personnalisée */
+ul.fade-in li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #d705b1a0; /* Mauve */
+}
+
+.dark ul.fade-in li::before {
+    color: rgba(58, 187, 19, 0.722); /* Vert */
+}
+
+
+
+
+
+
+/* --- STYLE DU LIEN ACTIF --- */
+
+/* Mode Jour (Mauve) */
+nav a.active {
+    color: #d705b1a0 !important; /* Force la couleur mauve */
+    font-weight: bold;
+}
+
+/* Force la petite barre sous le lien à être visible */
+nav a.active::after {
+    width: 100% !important;
+    background: #d705b1a0;
+}
+
+/* --- ADAPTATION MODE DARK (Vert) --- */
+.dark nav a.active {
+    color: rgba(58, 187, 19, 0.722) !important; /* Force le vert */
+}
+
+.dark nav a.active::after {
+    background: rgba(58, 187, 19, 0.722);
+}
+
+
+
+
+footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    background: #111;
+    color: white;
+    transition: background 0s, color 0s; /* Anti-flash */
+
+    padding: 20px;
+ 
+}
+
+
+
+/* --- MODE DARK (Vert) --- */
+.dark .cv-link {
+    border-color: rgba(58, 187, 19, 0.722);
+    color: rgba(58, 187, 19, 0.722);
+}
+
+.dark .cv-link:hover {
+    background: rgba(58, 187, 19, 0.722);
+    color: #0f172a !important; /* Texte sombre sur fond vert */
+}
+
+
+
+/* Cette classe donne l'ordre d'utiliser l'animation fadeHero */
+.hero-animated {
+    animation: fadeHero 1.2s ease-out forwards;
+}
+
+@keyframes fadeHero {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Animation d'apparition de la modale */
+@keyframes slideDown {
+    from { 
+        transform: translateY(-50px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+
+/* Animation d'apparition type iPhone */
+@keyframes iphoneZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); /* Effet zoom arrière */
+    }
+    70% {
+        transform: scale(1.05); /* Le petit rebond iPhone */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

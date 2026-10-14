@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        (function() {
+            const savedMode = localStorage.getItem("theme");
+            if (savedMode === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+        })();
+    </script>
+     
+<meta charset="UTF-8">
+<title>Système de traçabilité biopharmaceutique</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="secondary">
+    <!-- CONTACT -->
+ 
+<div class="sidebar-contact">
+    <a href="mailto:meddebmarwa2017@gmail.com" class="side-link mail">
+        <img src="mail.png" alt="Email">
+        <span class="side-text">Email</span>
+    </a>
+    <a href="tel:+21626115760" class="side-link phone">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Téléphone">
+        <span class="side-text">Appeler</span>
+    </a>
+    <a href="https://www.linkedin.com/in/marwa-meddeb-3aa6aa209" target="_blank" class="side-link linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span class="side-text">LinkedIn</span>
+    </a>
+    <a href="CV_Marwa_Meddeb.pdf" target="_blank" class="side-link cv">
+        <img src="cv.png" alt="CV">
+        <span class="side-text">Mon CV</span>
+    </a>
+</div>
+<div id="binary-bg"></div>
+<header>
+    
+    <div class="logo-container">
+        <a href="javascript:void(0)" onclick="openModal()" class="logo-contact">
+            <h2>Marwa</h2>
+            <div class="icon-circle">
+                <img src="@.png" alt="Contact">
+            </div>
+        </a>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Me Contacter</h3>
+            <a href="mailto:meddebmarwa2017@gmail.com" class="contact-btn">
+                 M'envoyer un message
+            </a>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="index.html#projects" class="active">Projets</a>
+        <a href="certifications.html">Certifications</a>
+        
+    </nav>
+    
+   <div class="mode-switch">
+    <input type="checkbox" id="darkModeToggle">
+    <label for="darkModeToggle" class="switch-label">
+        <img src="lune.png" alt="Mode Nuit" class="switch-icon icon-moon">
+        <img src="soleil.png" alt="Mode Jour" class="switch-icon icon-sun">
+        <div class="switch-ball"></div>
+    </label>
+</div>
+</header>
+
+<section class="project-page">
+
+
+
+    <h1 class="fade-in">BioTrack LIMS – Système de traçabilité biopharmaceutique</h1>
+
+    <div class="project-container fade-in">
+
+        <img src="bioTrack.png">
+
+        <div class="project-info">
+            <p style="
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #e9d5ff, #dbeafe);
+    color: #6b21a8;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+">
+    Développement Web
+</p>
+            
+            <p>Application web de gestion de laboratoire inspirée des systèmes LIMS, développée pour assurer le suivi et la traçabilité des lots de production biopharmaceutique. Elle intègre des fonctionnalités de contrôle qualité, 
+                de validation des paramètres de bioprocédés et de génération de rapports d'audit.</p>
+
+            <h3>Technologies</h3>
+            <ul>
+                <li>HTML / CSS</li>
+                <li>JavaScript</li>
+                <li>LocalStorage</li>
+                <li>Git & GitHub</li>
+                <li>GitHub Pages</li>
+            </ul>
+
+            <h3>Points Clés</h3>
+    <ul class="project-features">
+
+        <li>Développement d'un module de saisie et de suivi des lots de production.</li>
+        <li>Implémentation de règles de validation automatique des paramètres de température et de pH.</li>
+        <li>Création d'un module de transcription ADN vers ARNm avec validation des séquences.</li>
+        <li>Mise en place d'une recherche et de filtres selon le statut de conformité.</li>
+        <li>Sauvegarde des données avec LocalStorage.</li>
+        <li>Génération et exportation de rapports CSV compatibles avec Excel.</li>
+    </ul>
+
+    <div class="project-links">
+      <a href="https://marwameddeb.github.io/biotrack-lims/" target="_blank" class="btn-primary">Voir la Démo</a>
+      <a href="https://github.com/marwameddeb/biotrack-lims" target="_blank" class="btn-secondary">Code Source</a>
+    </div>
+
+        </div>
+
+    </div>
+</section>
+
+<footer class="fade-in">
+    <div class="footer-content">
+        <p>© 2026 Marwa Meddeb</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

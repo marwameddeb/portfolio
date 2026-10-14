@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        (function() {
+            const savedMode = localStorage.getItem("theme");
+            if (savedMode === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+        })();
+    </script>
+<meta charset="UTF-8">
+<title>Marwa Meddeb | Portfolio</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body id="top">
+    
+    <div id="binary-bg"></div>
+    <!-- CONTACT -->
+ 
+<div class="sidebar-contact">
+    <a href="mailto:meddebmarwa2017@gmail.com?subject=Contact depuis votre Portfolio" class="side-link mail">
+        <img src="mail.png" alt="Email">
+        <span class="side-text">Email</span>
+    </a>
+    <a href="tel:+21626115760" class="side-link phone">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Téléphone">
+        <span class="side-text">Appeler</span>
+    </a>
+    <a href="https://www.linkedin.com/in/marwa-meddeb-3aa6aa209" target="_blank" class="side-link linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span class="side-text">LinkedIn</span>
+    </a>
+    <a href="CV_Marwa_Meddeb.pdf" target="_blank" class="side-link cv">
+        <img src="cv.png" alt="CV">
+        <span class="side-text">Mon CV</span>
+    </a>
+    
+</div>
+
+<header>
+
+    
+<div class="logo-container">
+        <a href="javascript:void(0)" onclick="openModal()" class="logo-contact">
+            <h2>Marwa</h2>
+            <div class="icon-circle">
+                <img src="@.png" alt="Contact">
+            </div>
+        </a>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Me Contacter</h3>
+            <a href="mailto:meddebmarwa2017@gmail.com" class="contact-btn">
+                 M'envoyer un message
+            </a>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Me Contacter</h2>
+        <div class="contact-details">
+            <p><strong>Email :</strong> meddebmarwa2017@gmail.com</p>
+            <p><strong>Téléphone :</strong> +1 418 255 9668</p>
+        </div>
+    </div>
+</div>
+
+    <nav>
+        <a href="index.html" class="active">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="index.html#projects">Projets</a>
+        <a href="certifications.html">Certifications</a>
+        
+    </nav>
+
+   <div class="mode-switch">
+    <input type="checkbox" id="darkModeToggle">
+    <label for="darkModeToggle" class="switch-label">
+        <img src="lune.png" alt="Mode Nuit" class="switch-icon icon-moon">
+        <img src="soleil.png" alt="Mode Jour" class="switch-icon icon-sun">
+        <div class="switch-ball"></div>
+    </label>
+</div>
+
+   
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="overlay"></div>
+
+    <div class="hero-content hero-flex">
+        <img src="mimi.png" class="hero-img hero-animated">
+        <h1 class="hero-animated" style="animation-delay: 0.2s; opacity: 0;">Je suis <span>Meddeb Marwa</span></h1>
+
+       
+
+<div class="qualities">
+
+    <div class="hero-animated" style="animation-delay: 0.4s; opacity: 0;" >
+        
+        <h3>Curieuse</h3>
+        <p>J'aime apprendre constamment et découvrir de nouvelles technologies.</p>
+    </div>
+
+    <div class="hero-animated" style="animation-delay: 0.4s; opacity: 0;">
+        
+        <h3>Coopérative</h3>
+        <p>J'apprécie le travail en équipe et je m'intègre facilement.</p>
+    </div>
+
+    <div class="hero-animated" style="animation-delay: 0.4s; opacity: 0;">
+        
+        <h3>Stratégique</h3>
+        <p>J'adopte toujours une approche réfléchie et organisée.</p>
+    </div>
+
+</div>
+
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+    <h2 class="fade-in hero-animated">Mes Projets</h2>
+
+    <div class="projects-grid ">
+
+    <a href="sys_de_recomm.html" class="card fade-in">
+        <img src="sharebook.png">
+        <h3>Système de Recommandation de Livres</h3>
+    </a>
+
+    <a href="analyse_perf_etud.html" class="card fade-in">
+        <img src="analyse_perf_etud.png">
+        <h3>Analyse des performances des étudiants</h3>
+    </a>
+
+    <a href="biotrack.html" class="card fade-in">
+        <img src="bioTrack.png">
+        <h3>BioTrack LIMS – Système de traçabilité biopharmaceutique</h3>
+    </a>
+    
+    <a href="portfolio.html" class="card fade-in">
+        <img src="portfolio1.png">
+        <h3>Mon Portfolio</h3>
+    </a>
+
+</div>
+
+    
+</section>
+
+
+
+
+
+<footer class="fade-in">
+   <div class="footer-content">
+       
+       <p>© 2026 Marwa Meddeb</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+
+
+</body>
+</html>

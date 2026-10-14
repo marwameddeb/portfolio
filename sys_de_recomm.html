@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        (function() {
+            const savedMode = localStorage.getItem("theme");
+            if (savedMode === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+        })();
+    </script>
+<meta charset="UTF-8">
+<title>Système de Recommandation de Livres</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="secondary">
+    <!-- CONTACT -->
+ 
+<div class="sidebar-contact">
+    <a href="mailto:meddebmarwa2017@gmail.com" class="side-link mail">
+        <img src="mail.png" alt="Email">
+        <span class="side-text">Email</span>
+    </a>
+    <a href="tel:+21626115760" class="side-link phone">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Téléphone">
+        <span class="side-text">Appeler</span>
+    </a>
+    <a href="https://www.linkedin.com/in/marwa-meddeb-3aa6aa209" target="_blank" class="side-link linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span class="side-text">LinkedIn</span>
+    </a>
+    <a href="CV_Marwa_Meddeb.pdf" target="_blank" class="side-link cv">
+        <img src="cv.png" alt="CV">
+        <span class="side-text">Mon CV</span>
+    </a>
+</div>
+<div id="binary-bg"></div>
+<header>
+        
+    <div class="logo-container">
+        <a href="javascript:void(0)" onclick="openModal()" class="logo-contact">
+            <h2>Marwa</h2>
+            <div class="icon-circle">
+                <img src="@.png" alt="Contact">
+            </div>
+        </a>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Me Contacter</h3>
+            <a href="mailto:meddebmarwa2017@gmail.com" class="contact-btn">
+                 M'envoyer un message
+            </a>
+        </div>
+    </div>
+    
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="index.html#projects" class="active">Projets</a>
+        <a href="certifications.html">Certifications</a>
+        
+    </nav>
+   
+   <div class="mode-switch">
+    <input type="checkbox" id="darkModeToggle">
+    <label for="darkModeToggle" class="switch-label">
+        <img src="lune.png" alt="Mode Nuit" class="switch-icon icon-moon">
+        <img src="soleil.png" alt="Mode Jour" class="switch-icon icon-sun">
+        <div class="switch-ball"></div>
+    </label>
+</div>
+</header>
+
+<section class="project-page">
+    <h1 class="fade-in">Système de Recommandation de Livres</h1>
+
+    <div class="project-container fade-in">
+
+        <img src="sharebook.png">
+
+        <div class="project-info">
+            <p style="
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #fce7f3, #e9d5ff);
+    color: #a13b83;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+">
+    Machine Learning
+</p>
+            <p>
+                 Développement d'un modèle d'apprentissage automatique (ML) pour générer des recommandations personnalisées de livres.
+
+            </p>
+
+            <h3>Technologies</h3>
+            <ul>
+                <li>Python</li>
+                <li>Pandas, NumPy</li>
+                <li>Scikit-learn (Random Forest)</li>
+            </ul>
+
+            <h3>Points Clés</h3>
+            <p>Traitement et analyse de jeux de données, 
+                entraînement d'un modèle Random Forest Regressor et évaluation des performances d'apprentissage.</p>
+           
+            <div class="project-links">
+      <a href="https://github.com/marwameddeb/sys_de_recommandation_livres.git" target="_blank" class="btn-secondary">Code Source</a>
+    </div>
+        </div>
+
+</section>
+
+
+<footer class="fade-in">
+    <div class="footer-content">
+        <p>© 2026 Marwa Meddeb</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

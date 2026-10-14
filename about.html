@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script>
+        (function() {
+            const savedMode = localStorage.getItem("theme");
+            if (savedMode === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+        })();
+    </script>
+<meta charset="UTF-8">
+<title>À propos</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="binary-bg"></div>
+    <!-- CONTACT -->
+ 
+<div class="sidebar-contact">
+    <a href="mailto:meddebmarwa2017@gmail.com" class="side-link mail">
+        <img src="mail.png" alt="Email">
+        <span class="side-text">Email</span>
+    </a>
+    <a href="tel:+21626115760" class="side-link phone">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Téléphone">
+        <span class="side-text">Appeler</span>
+    </a>
+    <a href="https://www.linkedin.com/in/marwa-meddeb-3aa6aa209" target="_blank" class="side-link linkedin">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        <span class="side-text">LinkedIn</span>
+    </a>
+    <a href="CV_Marwa_Meddeb.pdf" target="_blank" class="side-link cv">
+        <img src="cv.png" alt="CV">
+        <span class="side-text">Mon CV</span>
+    </a>
+</div>
+<header>
+
+       <div class="logo-container">
+        <a href="javascript:void(0)" onclick="openModal()" class="logo-contact">
+            <h2>Marwa</h2>
+            <div class="icon-circle">
+                <img src="@.png" alt="Contact">
+            </div>
+        </a>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Me Contacter</h3>
+            <a href="mailto:meddebmarwa2017@gmail.com" class="contact-btn">
+                 M'envoyer un message
+            </a>
+        </div>
+    </div>
+
+   <div class="mode-switch">
+    <input type="checkbox" id="darkModeToggle">
+    <label for="darkModeToggle" class="switch-label">
+        <img src="lune.png" alt="Mode Nuit" class="switch-icon icon-moon">
+        <img src="soleil.png" alt="Mode Jour" class="switch-icon icon-sun">
+        <div class="switch-ball"></div>
+    </label>
+</div>
+
+
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="about.html" class="active">À propos</a>
+        <a href="index.html#projects">Projets</a>
+        <a href="certifications.html">Certifications</a>
+        
+    </nav>
+
+    
+</header>
+
+
+<section class="page">
+    <h1 class=" hero-animated ">À propos de moi</h1>
+
+    <p class="hero-animated" style="animation-delay: 0.2s; opacity: 0;">
+        Je suis étudiante en 3ème année en Génie Logiciel & Systèmes d'Information à <strong>ESGITECH</strong>.
+        Mon parcours atypique allie la rigueur scientifique de la biotechnologie, une solide expérience en relation client et la logique du développement logiciel.
+    </p>
+
+    <div class="bio-section hero-animated" style="animation-delay: 0.4s; opacity: 0;">
+        <p><strong>Mon Parcours </strong></p>
+        <p><strong>De la Science à l'Industrie</strong></p>
+        <p >
+            Avant ma reconversion, j’ai obtenu une licence en Biotechnologie Pharmaceutique et un Master professionnel en Développement Industriel de Produits de Santé à l’<strong>ISBST</strong>. 
+            J'ai réalisé plusieurs stages au sein de <strong>laboratoires pharmaceutiques et médicaux</strong>, où j'ai acquis une solide culture de la rigueur et de la conformité.
+        </p>
+
+        <p>
+            <strong> Solide Base Professionnelle</strong>
+            </p>
+            <p>
+          En parallèle de mon cursus scientifique, mon parcours de 11 ans chez Teleperformance m'a permis de maîtriser la gestion 
+
+          de situations complexes et la résolution de problèmes techniques pour des leaders du secteur (Orange, SFR, Bouygues). 
+
+          Cette expérience m'a dotée d'une grande capacité d'adaptation, une qualité essentielle pour évoluer dans l'écosystème 
+            agile du Génie Logiciel.
+        </p>
+            </p>
+        <p>
+            <strong> Vers le Génie Logiciel</strong>
+            </p>
+            <p>
+    Passionnée par les nouvelles technologies, j'ai suivi en 2024 une formation intensive en <strong>développement Fullstack à GOMYCODE</strong>, ce qui m’a permis de renforcer mes compétences techniques et de confirmer mon orientation vers le génie logiciel.
+        </p>
+    </div>
+
+
+    <h2 class="fade-in">Expertise Industrielle & Qualité</h2>
+    <p class="fade-in ">
+        Grâce à mon parcours en santé, je maîtrise des méthodologies applicables au monde de l'entreprise et du logiciel :
+    </p>
+    <ul class="fade-in ">
+        <li><strong>Management de la Qualité :</strong> Respect des normes et protocoles rigoureux.</li>
+        <li><strong>Méthodologie 5S :</strong> Organisation et optimisation de l'environnement de travail.</li>
+        <li><strong>Connaissances ISO :</strong> Sensibilisation aux normes de qualité internationales.</li>
+    </ul>
+
+    <h2 class="fade-in">Expérience Relationnelle et Soft Skills </h2>
+    <p class="fade-in ">
+        Mon parcours de 11 ans chez <strong>Teleperformance </strong> vient compléter cette rigueur par des compétences humaines essentielles en ingénierie : 
+    </p>
+     <ul class="fade-in ">
+        <li><strong>Analyse de besoins complexes :</strong> Diagnostic technique et résolution d'incidents pour des clients grands comptes (SFR, Orange, Bouygues).</li>
+        <li><strong>Communication et Empathie :</strong> Capacité à traduire des problèmes techniques en solutions compréhensibles pour l'utilisateur final.</li>
+        <li><strong>Gestion du stress et de la performance :</strong> Expérience confirmée dans un environnement exigeant (SFR, Orange, Bouygues Telecom) nécessitant réactivité et rigueur.</li>
+    </ul>
+
+    <h2 class="fade-in ">Compétences Linguistiques</h2>
+    <div class="languages-grid fade-in">
+        <div class="lang-item ">
+            <strong>Français :</strong> Niveau Courant / Professionnel
+        </div>
+        <div class="lang-item">
+            <strong>Anglais :</strong> Bon niveau (Technique et Professionnel)
+        </div>
+    </div>
+
+
+
+
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="fade-in ">Compétences Techniques</h2>
+
+    <div class="skills">
+
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+            <p>HTML / CSS<br><span>Bon niveau, en évolution continue</span></p>
+        </div>
+
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+            <p>JavaScript<br><span>Bonne base, progression active</span></p>
+        </div>
+
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png">
+            <p>SQL / NoSQL<br><span>Maîtrise des bases de données</span></p>
+        </div>
+
+        <div>
+            <img src="python.png">
+            <p>Python / C<br><span>Notions solides</span></p>
+        </div>
+
+    </div>
+</section>
+    
+</section>
+
+
+
+<footer class="fade-in">
+    <div class="footer-content">
+        <p>© 2026 Marwa Meddeb</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
